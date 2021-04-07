@@ -43,12 +43,6 @@ input {
 }
 
 .container {
-    /*margin: auto;
-    padding: 0;
-    display: flex;
-    height: 80%;
-    float: 1;
-    background-color: bisque;*/
     height: 43.5vh;
     width: auto;
     margin: auto;
@@ -117,12 +111,6 @@ input {
 }
 */
 .container2 {
-    /*margin: auto;
-    padding: 0;
-    display: flex;
-    height: 80%;
-    float: 1;
-    background-color: bisque;*/
     height: 43.5vh;
     width: auto;
     margin: auto;

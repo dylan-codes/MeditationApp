@@ -1,6 +1,7 @@
 const app = () => {
   var appStarted = false;
-
+  
+  //This is a component I forked from "https://tobiasahlin.com/moving-letters/"
   // Wrap every letter in a span
   var textWrapper = document.querySelector('.ml3');
   textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
@@ -33,14 +34,17 @@ const app = () => {
         console.log("pausing..");
       }
   }
-  {/* <img src="./content/play.svg" onclick="playButton()" id="play" width="600px" height="600px"alt="play"/> */}
+ 
+  //Function that starts the app.
   beginTime = () => {
       event.preventDefault();
-      duration = document.getElementById('time').value;
-      audio = document.getElementById("sounds");
-      startAudio = document.getElementById("bowl");
-      endAudio = document.getElementById("bell");
-  
+      //Setting variables to DOM elements
+      var duration = document.getElementById('time').value;
+      let audio = document.getElementById("sounds");
+      let startAudio = document.getElementById("bowl");
+      let endAudio = document.getElementById("bell");
+      var div = document.getElementById("player");
+      //Creating the "play/pause" button element
       var playerImage = document.createElement("img");
       playerImage.src = "./content/pause.svg";
       playerImage.id = "play";
@@ -48,11 +52,15 @@ const app = () => {
       playerImage.setAttribute("height", "600px");
       playerImage.setAttribute("alt", "play/pause");
       playerImage.setAttribute("onClick", "playButton()");
-  
-      var div = document.getElementById("player");
-  
+      
+      
+      /* App begins with the starting meditation bowl.
+         Bug when user pauses audio playback at the beginning, the bowl.mp3 sound doesn't pause */
       startAudio.play()
   
+      /* Controlling logic:
+          Decides the app is playing. Loops audio until user's inputted time duration is complete.
+          Ends with a bell and resets the page to 'appStarted=false' */
       if (appStarted == false){
         div.appendChild(playerImage)
         appStarted = true;
@@ -66,11 +74,6 @@ const app = () => {
           appStarted = false;
         }, (duration*60)*1000)
       }
-  }
-  
-  /* A function to run at the finish of the timer, should stop the timer/music, disable the play/pause button, and display a motivational quote */
-  finishTime = () => {
-  
   }
 }
 
