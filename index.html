@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Meditate</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./styles/global.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
+        
+    </head>
+    <body>
+        <h1>Let's Meditate</h1>
+
+        <div class ="video-layer">
+            <video height="auto" width="auto" autoplay loop>
+                <source src="content/pexels-mar-fer-6899793.mp4" type="video/mp4">
+            </video>
+        </div>
+
+
+        <div class="container">
+            <div id="player">
+                
+            </div>
+        </div>
+        <div class="container2">
+            <div class="text-animation">
+                <h1 class="ml3">How long will we be meditating for?</h1>
+            </div>
+            <form class="time-select">
+                 <label for="time">Minutes:</label>
+                 <input type="number" name="timeValue" id="time">
+                 <button onclick="beginTime()">Submit</button>
+            </form>
+        </div>
+
+        <audio id="sounds">
+            <source src="./content/RiverSound.mp3" type="audio/mp3">
+        </audio>
+        <audio id="bowl">
+            <source src="./content/meditationBowl.mp3" type="audio/mp3">
+        </audio>
+        <audio id="bell">
+            <source src="./content/meditationBell.mp3" type="audio/mp3">
+        </audio>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+        <script src="app.js"></script>
+        
+    </body>
+</html>
