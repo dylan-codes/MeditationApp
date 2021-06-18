@@ -6,6 +6,11 @@ const startAudio = document.getElementById("bowl");
 const endAudio = document.getElementById("bell");
 var screenText = document.getElementsByClassName("ml3")[0]
 var div = document.getElementById("player");
+//Setting volume levels because the original audio mixes are absurdly loud
+startAudio.volume = 0.1;
+endAudio.volume = 0.1;
+audio.volume = 0.3;
+
 //Creating the "play/pause" button element
 var playerImage = document.createElement("img");
   playerImage.src = "./content/pause.svg";
@@ -30,6 +35,19 @@ currentTime = audio.currentTime;
     console.log(elapsedTime); */
    };
 
+//Using a self-deployed Heroku Proxy server to get around CORS errors
+var zenQuote = '';
+fetch(' https://sleepy-depths-57687.herokuapp.com/https://zenquotes.io/api/random')
+   .then(response => {
+    return response.json();
+   })
+   .then(quote => {
+    console.log(quote);
+    console.log(quote[0].q);
+    console.log(quote[0].a);
+    zenQuote = quote[0].q;
+    zenAuthor = quote[0].a;
+   });
 
 const app = () => {
   var appStarted = false;
@@ -58,11 +76,11 @@ const app = () => {
   // First call for initial animation.
   animeComponent();
 
-  // A function for setting time. Reduces bload from the copy/pasted timeout function.
+  // A function for setting time. Reduces bloat from the copy/pasted timeout function.
   setTime = (duration) => {
     timer = window.setTimeout(() => {audio.pause(); 
             endAudio.play();
-            screenText.innerHTML= ("It's nice to take a time out.");
+            screenText.innerHTML= ("\"" + zenQuote + "\"" + "  -" + zenAuthor)
             animeComponent();
             div.removeChild(playerImage);
             appStarted = false;
